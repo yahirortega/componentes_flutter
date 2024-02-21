@@ -1,3 +1,5 @@
+import 'package:componentes/screens/inputs_screen.dart';
+import 'package:componentes/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 
@@ -11,26 +13,38 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Componentes de flutter'),
       ),
       body: ListView(
-        children: const <Widget>[
+        children:  <Widget>[
           ListTile(
-            title: Text ('campeones') ,
-            subtitle: Text('Las vegas '),
-            leading: Icon(Icons.casino),
-            trailing: Icon(Icons.arrow_circle_right_rounded),
+            title: Text ('Entradas',
+            style:AppTheme.lightTheme.textTheme.headlineLarge,
+            ) ,
+            subtitle:   Text('Intruduciendo  valores',style: AppTheme.lightTheme.textTheme.bodySmall,
+),
+            leading: const Icon(Icons.power_input),
+            trailing: const Icon(Icons.arrow_circle_right_rounded),
+            onTap: (){
+              final ruta1 = MaterialPageRoute(builder: (context){
+                return const ImputsScreen();
+              });
+              Navigator.push(context, ruta1);
+            },
           ),
-          Divider(),
+          const Divider(),
               ListTile(
-            title: Text ('campeones') ,
-            subtitle: Text('Mexico'),
-            leading: Icon(Icons.price_check_sharp),
-            trailing: Icon(Icons.arrow_circle_right_rounded),
+            title: Text ('Listview.builder',style:AppTheme.lightTheme.textTheme.headlineLarge,
+) ,
+            subtitle: const Text('Lista  con escroll infinito'),
+            leading: const Icon(Icons.price_check_sharp),
+            trailing: const Icon(Icons.arrow_circle_right_rounded),
+       
               ),
-              Divider(),
-              ListTile(
-            title: Text ('campeones') ,
-            subtitle: Text('peru'),
-            leading: Icon(Icons.beach_access),
-            trailing: Icon(Icons.arrow_circle_right_rounded),
+              const Divider(),
+            ListTile(
+            title: Text ('Notificaciones',style:AppTheme.lightTheme.textTheme.headlineLarge,
+) ,
+            subtitle: const Text('Mostrar una notificacion '),
+            leading: const Icon(Icons.beach_access),
+            trailing: const Icon(Icons.arrow_circle_right_rounded),
               )
         ],
         
