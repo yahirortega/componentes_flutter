@@ -1,54 +1,90 @@
+import 'package:componentes/screens/infinite_scroll_screen.dart';
+import 'package:componentes/screens/notification_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:componentes/screens/inputs_screen.dart';
 import 'package:componentes/theme/app_theme.dart';
-import 'package:flutter/material.dart';
 
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreeen extends StatelessWidget {
+  const HomeScreeen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
-        title: const Text('Componentes de flutter'),
+      appBar: AppBar(
+        title: const Text('companentes de flutter'),
       ),
       body: ListView(
         children:  <Widget>[
           ListTile(
-            title: Text ('Entradas',
-            style:AppTheme.lightTheme.textTheme.headlineLarge,
-            ) ,
-            subtitle:   Text('Intruduciendo  valores',style: AppTheme.lightTheme.textTheme.bodySmall,
-),
-            leading: const Icon(Icons.power_input),
-            trailing: const Icon(Icons.arrow_circle_right_rounded),
-            onTap: (){
+            title: Text('Entradas', 
+            style: Apptheme.darkTheme.textTheme.headlineLarge,
+            ),
+            subtitle: Text('Introduciendo valores',
+            style: Apptheme.darkTheme.textTheme.bodySmall,
+            ),
+            leading: IconTheme(
+              data: Apptheme.darkTheme.iconTheme,
+              child: const Icon(Icons.input),
+              ),
+            trailing:IconTheme(
+              data: Apptheme.darkTheme.iconTheme,
+              child: const Icon(Icons.arrow_circle_right_rounded),
+              ),
+              onTap: () {
               final ruta1 = MaterialPageRoute(builder: (context){
-                return const ImputsScreen();
+                return const InputScreen();
               });
               Navigator.push(context, ruta1);
             },
           ),
           const Divider(),
-              ListTile(
-            title: Text ('Listview.builder',style:AppTheme.lightTheme.textTheme.headlineLarge,
-) ,
-            subtitle: const Text('Lista  con escroll infinito'),
-            leading: const Icon(Icons.price_check_sharp),
-            trailing: const Icon(Icons.arrow_circle_right_rounded),
-       
+           ListTile(
+            title: Text('Listview.builder',
+            style: Apptheme.darkTheme.textTheme.headlineLarge,
+            ),
+            subtitle: Text('Lista con scroll infinito',
+            style: Apptheme.darkTheme.textTheme.bodySmall,
+            ),
+            leading: IconTheme(
+              data: Apptheme.darkTheme.iconTheme,
+              child: const Icon(Icons.input),
               ),
-              const Divider(),
-            ListTile(
-            title: Text ('Notificaciones',style:AppTheme.lightTheme.textTheme.headlineLarge,
-) ,
-            subtitle: const Text('Mostrar una notificacion '),
-            leading: const Icon(Icons.beach_access),
-            trailing: const Icon(Icons.arrow_circle_right_rounded),
-              )
+            trailing:IconTheme(
+              data: Apptheme.darkTheme.iconTheme,
+              child: const Icon(Icons.arrow_circle_right_rounded),
+              ),
+              onTap: () {
+              final ruta1 = MaterialPageRoute(builder: (context){
+                return const InfinitescrollScreen();
+              });
+              Navigator.push(context, ruta1);
+            },
+          ),
+          const Divider(),
+          ListTile(
+            title: Text('Notificaciones',
+            style: Apptheme.darkTheme.textTheme.headlineLarge,
+            ),
+            subtitle: Text('Mostrar una notificación',
+            style: Apptheme.darkTheme.textTheme.bodySmall,
+            ),
+            leading: IconTheme(
+              data: Apptheme.darkTheme.iconTheme,
+              child: const Icon(Icons.input),
+              ),
+            trailing:IconTheme(
+              data: Apptheme.darkTheme.iconTheme,
+              child: const Icon(Icons.arrow_circle_right_rounded),
+              ),
+              onTap: () {
+              final ruta1 = MaterialPageRoute(builder: (context){
+                return const NotificacionesScreen();
+              });
+              Navigator.push(context, ruta1);
+            },
+          ),
         ],
-        
-      )
-      );
+      ),
+    );
   }
 }

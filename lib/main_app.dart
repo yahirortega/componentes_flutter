@@ -9,8 +9,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
-      theme: AppTheme.lightTheme,
+      home: const HomeScreeen(),
+      theme: Apptheme.darkTheme,
     );
   }
 }
