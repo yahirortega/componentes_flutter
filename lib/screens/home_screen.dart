@@ -102,7 +102,7 @@ class HomeScreeen extends StatelessWidget {
               ),
               onTap: () {
               final ruta1 = MaterialPageRoute(builder: (context){
-                return const imageScreen();
+                return const ImagesScreen();
               });
               Navigator.push(context, ruta1);
             },

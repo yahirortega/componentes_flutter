@@ -11,6 +11,7 @@ class InputScreen extends StatefulWidget {
 class _InputScreenState extends State<InputScreen> {
   bool switchValue = false;
   double sliderValue = 0.0;
+  int radioSelected = 0;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -26,6 +27,7 @@ class _InputScreenState extends State<InputScreen> {
             entradaNombre(),
             entradaSwitch(),
             entradaSlider(),
+            entradaRadio(),
                       
                 const ElevatedButton(onPressed: null, child: Text('Guardar',))
               
@@ -100,4 +102,59 @@ class _InputScreenState extends State<InputScreen> {
       ],
     );
   }
+
+Column entradaRadio(){
+  return Column(
+    children: [
+      Text(
+        'Que prefieres para desarrollo movil ',
+        style: Apptheme.darkTheme.textTheme.headlineLarge,
+      ),
+     ListTile(
+      title: Text(
+        'kotlin',
+        style: Apptheme.darkTheme.textTheme.headlineSmall,
+      ),
+      leading: Transform.scale(
+        scale: 1.5,
+        child: Radio(
+          value:1,
+          groupValue: radioSelected,
+          onChanged: (value){
+            setState(() {
+                radioSelected = value!;
+            print('Seleccion  boton  radio: $radioSelected');
+              
+            });
+          
+          }
+        ),
+      )
+     ),
+       ListTile(
+      title: Text(
+        'Flutter',
+        style: Apptheme.darkTheme.textTheme.headlineSmall,
+      ),
+      leading: Transform.scale(
+        scale: 1.5,
+        child: Radio(
+          value:2,
+          groupValue: radioSelected,
+          onChanged: (value){
+            setState(() {
+                radioSelected = value!;
+            print('Seleccion  boton  radio: $radioSelected');
+              
+            });
+          
+          }
+        ),
+      )
+     )
+    ],
+
+  );
+}
+
 }
