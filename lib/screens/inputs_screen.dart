@@ -1,3 +1,7 @@
+import 'package:componentes/screens/home_screen.dart';
+import 'package:componentes/screens/image_screen.dart';
+import 'package:componentes/screens/infinite_scroll_screen.dart';
+import 'package:componentes/screens/notification_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:componentes/theme/app_theme.dart';
 
@@ -15,6 +19,32 @@ class _InputScreenState extends State<InputScreen> {
   bool isCheked1 = false;
   bool isCheked2 = false;
   bool isCheked3 = false;
+  int  indexNavigation = 0;
+
+  openScreen(int index, BuildContext context){
+    MaterialPageRoute  ruta  = 
+    MaterialPageRoute(builder: (context) => const HomeScreeen());
+
+    switch( index){
+      case 0:
+      ruta =  MaterialPageRoute(builder: (context) => const HomeScreeen());
+      break;
+      case 1:
+      ruta = MaterialPageRoute(builder: (context) => const InfinitescrollScreen());
+      break;
+      case 2:
+      ruta = MaterialPageRoute(builder: (context) => const NotificacionesScreen());
+      break;
+      case 3:
+      ruta = MaterialPageRoute(builder: (context) => const ImagesScreen());
+
+    }
+    setState(() {
+      indexNavigation  = index;
+      Navigator.push(context, ruta);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -43,15 +73,34 @@ class _InputScreenState extends State<InputScreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: indexNavigation,
         backgroundColor: Apptheme.primaryColor,
+        unselectedItemColor: Apptheme.primaryColor,
+        selectedItemColor: Color.fromARGB(67, 244, 233, 200),
+        unselectedLabelStyle: const TextStyle(color: Apptheme.primaryColor),
+        onTap: (index) => openScreen(index, context),
         items:  const[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
+            label: 'Inicio'), 
+            
+            BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'lista'),
+            
+            BottomNavigationBarItem(
+            icon: Icon(Icons.home),
             label: 'Inicio'),
+            
+            BottomNavigationBarItem(
+            icon: Icon(Icons.notification_add),
+            label: 'Notificaciones'),
+            
+            BottomNavigationBarItem(
+            icon: Icon(Icons.exit_to_app),
+            label: 'salir'),
 
-             BottomNavigationBarItem(
-            icon: Icon(Icons.data_exploration),
-            label: 'Datos'),
+            
 
         ],
       )
