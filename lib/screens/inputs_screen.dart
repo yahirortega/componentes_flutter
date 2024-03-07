@@ -12,6 +12,9 @@ class _InputScreenState extends State<InputScreen> {
   bool switchValue = false;
   double sliderValue = 0.0;
   int radioSelected = 0;
+  bool isCheked1 = false;
+  bool isCheked2 = false;
+  bool isCheked3 = false;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -28,7 +31,11 @@ class _InputScreenState extends State<InputScreen> {
             entradaSwitch(),
             entradaSlider(),
             entradaRadio(),
-                      
+            Text(
+              'Que usas para correr tus Apps',
+              style: Apptheme.darkTheme.textTheme.headlineLarge,
+            ),
+                entradasCheck(),
                 const ElevatedButton(onPressed: null, child: Text('Guardar',))
               
             
@@ -154,6 +161,52 @@ Column entradaRadio(){
      )
     ],
 
+  );
+}
+
+Row entradasCheck(){
+  return Row(
+    children: [
+      Text('Navegador',
+      style: Apptheme.darkTheme.textTheme.bodySmall,
+      ),
+      Transform.scale(
+        child: Checkbox(
+          value:  isCheked1 , 
+          onChanged: (value){
+            setState(() {
+              isCheked1 = value!;
+              
+            });
+          }),
+      ),
+        Text('Emulador',
+      style: Apptheme.darkTheme.textTheme.bodySmall,
+      ),
+       Transform.scale(
+        child: Checkbox(
+          value:  isCheked2 , 
+          onChanged: (value){
+            setState(() {
+              isCheked2 = value!;
+              
+            });
+          }),
+      ),
+       Text('Navegador',
+      style: Apptheme.darkTheme.textTheme.bodySmall,
+      ), Transform.scale(
+        child: Checkbox(
+          value:  isCheked2 , 
+          onChanged: (value){
+            setState(() {
+              isCheked2 = value!;
+              
+            });
+          }),
+      ),
+      
+    ],
   );
 }
 
